@@ -239,7 +239,7 @@ const bird = {
           this.rotatation = 90;
           if (!SFX.played) {
             SFX.die.play();
-            SFX.die.play();
+            // SFX.die.play();
             SFX.played = true;
           }
         }
@@ -342,6 +342,11 @@ const UI = {
         sctx.font = "35px Squada One";
         sctx.fillText(this.score.curr, scrn.width / 2 - 5, 50);
         sctx.strokeText(this.score.curr, scrn.width / 2 - 5, 50);
+        sctx.font = "35px Squada One";
+        sctx.fillStyle = "yellow";
+        const str = "1st : " + ranking[0].score;
+        sctx.fillText(str, scrn.width / 2 + 40, 50);
+        sctx.strokeText(str, scrn.width / 2 + 40, 50);
         break;
       case state.gameOver:
         sctx.lineWidth = "2";
@@ -473,26 +478,18 @@ startGameButton.addEventListener("click", () => {
       // 블러 처리된 정보 입력 폼 숨기기
       infoForm.style.display = "none";
 
-      // $.ajax({
-      //   type: "get",
-      //   url: url,
-      //   dataType: "json",
-      //   data:{
-      //     "Timestamp": timestamp,
-      //     "name":playerName,
-      //     "phonenumber":playerPhone,
-      //     "gender":checkedRadioButton.value,
-      //     "score":UI.score.curr
-      //
-      //   },
-      //   success: function (response){
-      //     console.log("입력 완료");
-      //   },
-      //   error: function(request, status, error) {
-      //     console.log("code:" + request.status + "\n" + "error:" + error);
-      //     console.log(request.responseText);
-      //   }
-      // });
+      $.ajax({
+        type: "get",
+        url: url,
+        dataType: "json",
+        success: function (response){
+          ranking = response;
+        },
+        error: function(request, status, error) {
+          console.log("code:" + request.status + "\n" + "error:" + error);
+          console.log(request.responseText);
+        }
+      });
 
 
 
