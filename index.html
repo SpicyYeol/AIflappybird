@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KNU_Ai_Bird</title>
+    <link rel="stylesheet" href="style.css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Squada+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap">
+</head>
+<body>
+    <div id="info-form" class="blur">
+        <h1>개인 정보 입력</h1>
+        <input type="text" id="name" placeholder="이름">
+        <input type="text" id="phone" placeholder="전화번호(-제외하고 입력하세요)">
+        <!-- 성별 라디오 버튼 -->
+        <div id="gender-radio">
+            <label for="male">
+                <input type="radio" id="male" name="gender" value="male" > 남성
+            </label>
+            <label for="female">
+                <input type="radio" id="female" name="gender" value="female" checked> 여성
+            </label>
+        </div>
+        <!-- 성별에 따른 이미지 표시 -->
+        <img id="gender-img" src="/img/bird/female/b0.png" alt="gender image">
+        <button id="start-game">게임 시작</button>
+    </div>
+
+    <canvas id="canvas" ></canvas>
+    <script src="game.js"></script>
+</body>
+</html>

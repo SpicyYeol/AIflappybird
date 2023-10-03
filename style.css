@@ -1,0 +1,67 @@
+#canvas
+{
+    background-color:#30c0df;
+    border: 2px solid black;
+    display: block;
+    margin: auto;
+    padding: auto;
+    
+}
+
+h1 {
+    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트 패밀리로 변경 */
+    font-size: 24px; /* 원하는 폰트 크기로 변경 */
+    font-weight: bold; /* 폰트 굵기를 bold로 설정 */
+    color: #333; /* 폰트 색상 변경 (옵션) */
+}
+
+#gender-radio{
+
+    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트 패밀리로 변경 */
+    font-size: 24px; /* 원하는 폰트 크기로 변경 */
+    font-weight: bold; /* 폰트 굵기를 bold로 설정 */
+    color: white; /* 폰트 색상 변경 (옵션) */
+}
+
+.blur {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 블러 효과를 위한 배경색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999; /* 게임 화면 위에 표시 */
+}
+
+.blur h1 {
+    color: white;
+    font-size: 24px;
+}
+
+.blur input,
+.blur select,
+.blur button {
+    margin: 8px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+
+/* 성별 이미지 크기 및 초기 설정 */
+#gender-img {
+    width: 100px; /* 예시 이미지 크기 */
+    height: 100px;
+    display: block;
+}
+
+/* 게임 시작 버튼 호버 이벤트 */
+#start-game:hover {
+    background-color: #555; /* 예시 색상 */
+    color: #fff;
+    cursor: pointer;
+}
