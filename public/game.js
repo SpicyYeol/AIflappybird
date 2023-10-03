@@ -379,7 +379,7 @@ const UI = {
 
           sctx.fillText(rank, scrn.width / 2 - 100, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30 + 35*(i+1));
           sctx.strokeText(rank, scrn.width / 2 - 100, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30+ 35*(i+1));
-          sctx.font = "900 35px 'Noto Sans KR'";
+          sctx.font = "100 35px 'Noto Sans KR'";
           sctx.fillText(name, scrn.width / 2 - 98, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30 + 35*(i+1));
           sctx.font = "100 35px 'Noto Sans KR'";
           sctx.strokeText(name, scrn.width / 2 - 98, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30+ 35*(i+1));
