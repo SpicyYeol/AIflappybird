@@ -284,6 +284,9 @@ const bird = {
           // (frames % (100-parseInt(dx*3)
           frames = frames % (100-parseInt(dx*3));
           dx +=1;
+          if( dx >= 12){
+            dx = 12;
+          }
           pipe.gap = (85-dx*2)*scaledY;
           // console.log(pipe.gap);
 
