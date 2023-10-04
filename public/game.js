@@ -1,4 +1,4 @@
-const url = "https://script.google.com/macros/s/AKfycbwm4J2V4SwvFIJVZAoLjXc81n2BoC-WLEkh0vZpX5v5BZgrgj2uI6ZwoJjssk898iLGbw/exec";
+const url = "https://script.google.com/macros/s/AKfycbxVY3OYQ6bbLwv0ySeC4P7NztkdcnJR7UZ9VJyeDsdk5804U42AYGHn940ItyQJ4rsIvg/exec";
 const RAD = Math.PI / 180;
 const scrn = document.getElementById("canvas");
 // const ratio = 276/414;
@@ -201,6 +201,25 @@ const bird = {
       case state.record:
         let time = new Date();
         timestamp = time.toLocaleString();
+        if(ranking[0].score < UI.score.curr){
+          $.ajax({
+            type: "get",
+            url: url,
+            dataType: "json",
+            data:{
+              "winner" : "winner"
+            },
+            success: function(response) {
+              console.log("winner:", response);
+              // 여기에서 랭킹 정보를 처리합니다.
+            },
+            error: function(request, status, error) {
+              console.log(request)
+              console.log("code:" + request.status + "\n" + "error:" + error);
+              console.log("winner");
+            }
+          });
+        }
         $.ajax({
           type: "get",
           url: url,
@@ -221,7 +240,7 @@ const bird = {
           error: function(request, status, error) {
             console.log(request)
             console.log("code:" + request.status + "\n" + "error:" + error);
-            console.log(request.responseText);
+            console.log("rank");
           }
         });
         state.curr = state.gameOver;
@@ -402,23 +421,23 @@ const UI = {
   },
 };
 
-gnd.sprite.src = "img/ground.png";
-bg.sprite.src = "img/BG.png";
-pipe.top.sprite.src = "img/toppipe.png";
-pipe.bot.sprite.src = "img/botpipe.png";
-UI.gameOver.sprite.src = "img/go.png";
-UI.getReady.sprite.src = "img/getready.png";
-UI.tap[0].sprite.src = "img/tap/t0.png";
-UI.tap[1].sprite.src = "img/tap/t1.png";
-bird.animations[0].sprite.src = "img/bird/female/b0.png";
-bird.animations[1].sprite.src = "img/bird/female/b1.png";
-bird.animations[2].sprite.src = "img/bird/female/b2.png";
-bird.animations[3].sprite.src = "img/bird/female/b0.png";
-SFX.start.src = "sfx/start.wav";
-SFX.flap.src = "sfx/flap.wav";
-SFX.score.src = "sfx/score.wav";
-SFX.hit.src = "sfx/hit.wav";
-SFX.die.src = "sfx/die.wav";
+gnd.sprite.src = "./img/ground.png";
+bg.sprite.src = "./img/BG.png";
+pipe.top.sprite.src = "./img/toppipe.png";
+pipe.bot.sprite.src = "./img/botpipe.png";
+UI.gameOver.sprite.src = "./img/go.png";
+UI.getReady.sprite.src = "./img/getready.png";
+UI.tap[0].sprite.src = "./img/tap/t0.png";
+UI.tap[1].sprite.src = "./img/tap/t1.png";
+bird.animations[0].sprite.src = "./img/bird/female/b0.png";
+bird.animations[1].sprite.src = "./img/bird/female/b1.png";
+bird.animations[2].sprite.src = "./img/bird/female/b2.png";
+bird.animations[3].sprite.src = "./img/bird/female/b0.png";
+SFX.start.src = "./sfx/start.wav";
+SFX.flap.src = "./sfx/flap.wav";
+SFX.score.src = "./sfx/score.wav";
+SFX.hit.src = "./sfx/hit.wav";
+SFX.die.src = "./sfx/die.wav";
 
 function gameLoop() {
   update();
@@ -490,7 +509,7 @@ startGameButton.addEventListener("click", () => {
         },
         error: function(request, status, error) {
           console.log("code:" + request.status + "\n" + "error:" + error);
-          console.log(request.responseText);
+          console.log("load rank");
         }
       });
 
@@ -529,7 +548,7 @@ function draw() {
 }
 
 document.getElementById("male").addEventListener("change", function() {
-  document.getElementById("gender-img").src = "/img/bird/male/b0.png"; // 남성 이미지 경로
+  document.getElementById("gender-img").src = "./img/bird/male/b0.png"; // 남성 이미지 경로
   bird.animations[0].sprite.src = "img/bird/male/b0.png";
   bird.animations[1].sprite.src = "img/bird/male/b1.png";
   bird.animations[2].sprite.src = "img/bird/male/b2.png";
@@ -537,7 +556,7 @@ document.getElementById("male").addEventListener("change", function() {
 });
 
 document.getElementById("female").addEventListener("change", function() {
-  document.getElementById("gender-img").src = "/img/bird/female/b0.png"; // 여성 이미지 경로
+  document.getElementById("gender-img").src = "./img/bird/female/b0.png"; // 여성 이미지 경로
   bird.animations[0].sprite.src = "img/bird/female/b0.png";
   bird.animations[1].sprite.src = "img/bird/female/b1.png";
   bird.animations[2].sprite.src = "img/bird/female/b2.png";
