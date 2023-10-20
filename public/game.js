@@ -193,6 +193,11 @@ const bird = {
         this.y += this.speed;
         this.setRotation();
         this.speed += this.gravity;
+        if (UI.score.curr > UI.score.best){
+          UI.congs_flag = true
+        }else{
+          UI.congs_flag = false
+        }
         if (this.y + r >= gnd.y || this.collisioned()) {
           state.curr = state.record;
         }
@@ -329,6 +334,7 @@ const UI = {
   tx: 0,
   ty: 0,
   frame: 0,
+  congs_flag:false,
   draw: function () {
     switch (state.curr) {
       case state.getReady:
@@ -389,30 +395,44 @@ const UI = {
           sctx.fillText(sc, scrn.width / 2 - 85, scrn.height / 4 + 15);
           sctx.strokeText(sc, scrn.width / 2 - 85, scrn.height / 4 + 15);
         }
-        for( let i = 0; i < ranking.length; i++){
-          var name = ranking[i].name;
-          if (name.length > 2) {
-            const firstChar = name.charAt(0);
-            const lastChar = name.charAt(name.length - 1);
-            const middlePart = '*'.repeat(name.length - 2);
-            name = firstChar + middlePart + lastChar;
-          } else if (name.length === 2) {
-            name = name.charAt(0) + '*';
-          }
-          const rank = ranking[i].rank.toString().padStart(2,' ');
-          name = name.padStart(10,' ');
-          const score = ranking[i].score.toString().padStart(5,' ');
+        // this.congs_flag = true;
+        if (this.congs_flag === false) {
+          for (let i = 0; i < ranking.length; i++) {
+            var name = ranking[i].name;
+            if (name.length > 2) {
+              const firstChar = name.charAt(0);
+              const lastChar = name.charAt(name.length - 1);
+              const middlePart = '*'.repeat(name.length - 2);
+              name = firstChar + middlePart + lastChar;
+            } else if (name.length === 2) {
+              name = name.charAt(0) + '*';
+            }
+            const rank = ranking[i].rank.toString().padStart(2, ' ');
+            name = name.padStart(10, ' ');
+            const score = ranking[i].score.toString().padStart(5, ' ');
 
-          sctx.fillText(rank, scrn.width / 2 - 100, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30 + 35*(i+1));
-          sctx.strokeText(rank, scrn.width / 2 - 100, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30+ 35*(i+1));
-          sctx.font = "100 35px 'Noto Sans KR'";
-          sctx.fillText(name, scrn.width / 2 - 98, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30 + 35*(i+1));
-          sctx.font = "100 35px 'Noto Sans KR'";
-          sctx.strokeText(name, scrn.width / 2 - 98, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30+ 35*(i+1));
-          sctx.font = "40px Squada One";
-          sctx.fillText(score, scrn.width / 2 + 50, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30 + 35*(i+1));
-          sctx.strokeText(score, scrn.width / 2 + 50, scrn.height / 4 +this.tap[0].sprite.height+this.tap[1].sprite.height+ this.gameOver.sprite.height/4 + 30+ 35*(i+1));
+            sctx.fillText(rank, scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.strokeText(rank, scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.font = "100 35px 'Noto Sans KR'";
+            sctx.fillText(name, scrn.width / 2 - 98, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.font = "100 35px 'Noto Sans KR'";
+            sctx.strokeText(name, scrn.width / 2 - 98, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.font = "40px Squada One";
+            sctx.fillText(score, scrn.width / 2 + 50, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.strokeText(score, scrn.width / 2 + 50, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+          }
+        }else{
+          sctx.font = "30px 'Noto Sans KR', sans-serif"; // 글자 크기와 글꼴 설정
+          sctx.fillStyle = "black"; // 글자 색상 설정
+          // sctx.strokeStyle = "white"; // 테두리(stroke) 색상을 흰색으로 설정
+          sctx.fillText("1등을 축하드립니다!", scrn.width / 2 - 120, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 35)
+          // sctx.strokeText("1등을 축하드립니다!", scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height+  this.gameOver.sprite.height / 4 + 30 + 35)
+          // sctx.font = "100 15px black 'Noto Sans KR'";
+          sctx.fillText("맛있는 햄버거 쿠폰이", scrn.width / 2 - 120, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 70)
+          sctx.fillText("입력하신 연락처로 도착 예정입니다!", scrn.width / 2 - 210, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 105)
+          // sctx.strokeText("맛있는 햄버거 쿠폰이 입력하신 연락처로 도착 예정입니다!", scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height+  this.gameOver.sprite.height / 4 + 30 + 70)
         }
+
 
         break;
     }
