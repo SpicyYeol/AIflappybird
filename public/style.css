@@ -23,6 +23,12 @@ h1 {
     color: #333; /* 폰트 색상 변경 (옵션) */
 }
 
+h5 {
+    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트 패밀리로 변경 */
+    font-size: 14px; /* 원하는 폰트 크기로 변경 */
+    color: #ffffff; /* 폰트 색상 변경 (옵션) */
+}
+
 #gender-radio{
 
     font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트 패밀리로 변경 */

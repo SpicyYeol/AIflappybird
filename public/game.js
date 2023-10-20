@@ -391,10 +391,14 @@ const UI = {
         }
         for( let i = 0; i < ranking.length; i++){
           var name = ranking[i].name;
-          const firstChar = name.charAt(0);
-          const lasgChar = name.charAt(name.length -1);
-          const makedPart = '*'.repeat(name.length -2);
-          name = firstChar + makedPart + lasgChar;
+          if (name.length > 2) {
+            const firstChar = name.charAt(0);
+            const lastChar = name.charAt(name.length - 1);
+            const middlePart = '*'.repeat(name.length - 2);
+            name = firstChar + middlePart + lastChar;
+          } else if (name.length === 2) {
+            name = name.charAt(0) + '*';
+          }
           const rank = ranking[i].rank.toString().padStart(2,' ');
           name = name.padStart(10,' ');
           const score = ranking[i].score.toString().padStart(5,' ');
@@ -467,10 +471,6 @@ startGameButton.addEventListener("click", () => {
     const phonePattern = /^\d{11}$/;
     const namePattern = /^[가-힣]{2,}$/; // 한글 이름을 기준으로 함. 다른 언어에 맞게 수정 가능
 
-    // 예를 들어, 개인 정보를 어딘가에 저장하거나 처리할 수 있습니다.
-    console.log("플레이어 이름:", playerName);
-    console.log("전화번호:", playerPhone);
-    console.log("성별:", checkedRadioButton.value);
 
     if (!playerName || !playerPhone ) {
       // 개인 정보가 모두 입력되지 않은 경우에 경고 메시지 표시
@@ -483,16 +483,6 @@ startGameButton.addEventListener("click", () => {
       // 이름이 두 글자 이상이 아닌 경우에 경고 메시지 표시
       alert("이름은 두 글자 이상이어야 합니다.");
     } else {
-      // // 예를 들어, 개인 정보를 어딘가에 저장하거나 처리할 수 있습니다.
-      // console.log("플레이어 이름:", playerName);
-      // console.log("전화번호:", playerPhone);
-      // console.log("성별:", playerGender);
-
-      // 여기서 성별에 따라 캐릭터를 변경할 수 있습니다.
-      // 예를 들어, 여성 캐릭터로 변경하는 함수를 호출하거나 이미지를 변경합니다.
-      // 예: changeCharacter(playerGender);
-
-
 
       // 게임 상태를 게임 플레이 상태로 변경
       state.curr = state.getReady;
