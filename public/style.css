@@ -23,6 +23,16 @@ h1 {
     color: #333; /* 폰트 색상 변경 (옵션) */
 }
 
+h2 {
+    font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트 패밀리로 변경 */
+    font-size: 30px; /* 원하는 폰트 크기로 변경 */
+    font-weight: bold; /* 폰트 굵기를 bold로 설정 */
+    color: #ffffff; /* 폰트 색상 변경 (옵션) */
+    /*-webkit-text-stroke: 0.001px black; !* 외곽선의 두께와 색상을 설정하세요 *!*/
+    /*text-stroke: 0.001px black; !* 다른 브라우저를 위한 설정입니다 *!*/
+
+}
+
 h5 {
     font-family: 'Noto Sans KR', sans-serif; /* 원하는 폰트 패밀리로 변경 */
     font-size: 14px; /* 원하는 폰트 크기로 변경 */
