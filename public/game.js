@@ -407,7 +407,16 @@ const UI = {
         }
         // this.congs_flag = true;
         if (this.congs_flag === false) {
-          for (let i = 0; i < ranking.length; i++) {
+          sctx.font = "30px 'Noto Sans KR', sans-serif"; // 글자 크기와 글꼴 설정
+          // sctx.fillStyle = "black"; // 글자 색상 설정
+          // sctx.strokeStyle = "white"; // 테두리(stroke) 색상을 흰색으로 설정
+          sctx.fillText("사용자가 많은 경우", scrn.width / 2 - 100, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 35)
+          sctx.strokeText("사용자가 많은 경우", scrn.width / 2 - 100, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 35)
+          sctx.fillText("업데이트가 늦어질 수", scrn.width / 2 - 100, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 70)
+          sctx.strokeText("업데이트가 늦어질 수", scrn.width / 2 - 100, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 70)
+          sctx.fillText("있습니다.", scrn.width / 2 - 50, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 105)
+          sctx.strokeText("있습니다.", scrn.width / 2 - 50, scrn.height / 4+ this.tap[0].sprite.height + this.tap[1].sprite.height +  this.gameOver.sprite.height / 4 + 30 + 105)
+          for (let i = 0; i < 5; i++) {
             var name = ranking[i].name;
             if (name.length > 2) {
               const firstChar = name.charAt(0);
@@ -421,15 +430,15 @@ const UI = {
             name = name.padStart(10, ' ');
             const score = ranking[i].score.toString().padStart(5, ' ');
 
-            sctx.fillText(rank, scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
-            sctx.strokeText(rank, scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.fillText(rank, scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 4));
+            sctx.strokeText(rank, scrn.width / 2 - 100, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 4));
             sctx.font = "100 35px 'Noto Sans KR'";
-            sctx.fillText(name, scrn.width / 2 - 98, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.fillText(name, scrn.width / 2 - 98, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 4));
             sctx.font = "100 35px 'Noto Sans KR'";
-            sctx.strokeText(name, scrn.width / 2 - 98, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.strokeText(name, scrn.width / 2 - 98, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 4));
             sctx.font = "40px Squada One";
-            sctx.fillText(score, scrn.width / 2 + 50, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
-            sctx.strokeText(score, scrn.width / 2 + 50, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 1));
+            sctx.fillText(score, scrn.width / 2 + 50, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 4));
+            sctx.strokeText(score, scrn.width / 2 + 50, scrn.height / 4 + this.tap[0].sprite.height + this.tap[1].sprite.height + this.gameOver.sprite.height / 4 + 30 + 35 * (i + 4));
           }
         }else{
           sctx.font = "30px 'Noto Sans KR', sans-serif"; // 글자 크기와 글꼴 설정
