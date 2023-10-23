@@ -193,11 +193,21 @@ const bird = {
         this.y += this.speed;
         this.setRotation();
         this.speed += this.gravity;
-        if (UI.score.curr > UI.score.best){
-          UI.congs_flag = true
-        }else{
-          UI.congs_flag = false
+        // console.log(ranking[0].score);
+        try {
+          if (UI.score.curr > ranking[0].score){
+            UI.congs_flag = true
+          }else{
+            UI.congs_flag = false
+          }
+        }catch (e) {
+          if (UI.score.curr > 22){
+            UI.congs_flag = true
+          }else{
+            UI.congs_flag = false
+          }
         }
+
         if (this.y + r >= gnd.y || this.collisioned()) {
           state.curr = state.record;
         }
